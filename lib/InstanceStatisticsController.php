@@ -11,7 +11,7 @@ namespace WHMCS\Module\Addon\GameServersAthpStats;
 class InstanceStatisticsController {
 	private static $cache_dir = ROOTDIR . '/modules/addons/GameServersAthpStats/cache';
 
-	public static function getAvailableYears(): array {
+	public static function getAvailableYears() {
 		$return = [];
 
 		foreach ( scandir( self::$cache_dir . DIRECTORY_SEPARATOR ) as $item ) {
@@ -25,7 +25,7 @@ class InstanceStatisticsController {
 		} );
 	}
 
-	public static function getAvailableMonthsForYear( int $year ): array {
+	public static function getAvailableMonthsForYear(   $year )  {
 		$return = [];
 
 		foreach ( scandir( self::$cache_dir . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR ) as $item ) {
@@ -41,7 +41,7 @@ class InstanceStatisticsController {
 
 
 
-	public static function getAllowIpForMonth( int $year, int $moth ): array {
+	public static function getAllowIpForMonth(   $year,   $moth )  {
 		$ips = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_slot_history' . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR . $moth;
@@ -61,7 +61,7 @@ class InstanceStatisticsController {
 		return array_keys( $ips );
 	}
 
-	public static function getAllowIpForYear( int $year ): array {
+	public static function getAllowIpForYear(   $year )  {
 		$ips = [];
 
 		foreach ( scandir( self::$cache_dir . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR ) as $moth ) {
@@ -85,7 +85,7 @@ class InstanceStatisticsController {
 
 
 
-	public static function getAvgSlotsMonth( int $year, int $moth, array $ip_allow = [] ): int {
+	public static function getAvgSlotsMonth(   $year,   $moth,   $ip_allow = [] ) {
 		$avg = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_slot_history' . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR . $moth;
@@ -120,7 +120,7 @@ class InstanceStatisticsController {
 		return array_sum( $avg );
 	}
 
-	public static function getAvgOnlineMonth( int $year, int $moth, array $ip_allow = [] ): int {
+	public static function getAvgOnlineMonth(   $year,   $moth,   $ip_allow = [] )  {
 		$avg = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_online_history' . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR . $moth;
@@ -157,7 +157,7 @@ class InstanceStatisticsController {
 
 
 
-	public static function getMaxSlotsByVirtualServersLastWeekly( array $ip_allow = [] ): array {
+	public static function getMaxSlotsByVirtualServersLastWeekly(   $ip_allow = [] )  {
 		$maxSlotsByVirtualServers = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_max_slots_by_virtual_server' . DIRECTORY_SEPARATOR . date( 'Y' ) . DIRECTORY_SEPARATOR . date( 'n' );
@@ -192,7 +192,7 @@ class InstanceStatisticsController {
 		return $maxSlotsByVirtualServers;
 	}
 
-	public static function getMaxOnlineByVirtualServersLastWeekly( array $ip_allow = [] ): array {
+	public static function getMaxOnlineByVirtualServersLastWeekly(   $ip_allow = [] )  {
 		$maxOnlineByVirtualServers = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_max_online_by_virtual_server' . DIRECTORY_SEPARATOR . date( 'Y' ) . DIRECTORY_SEPARATOR . date( 'n' );

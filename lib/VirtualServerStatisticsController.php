@@ -11,7 +11,7 @@ namespace WHMCS\Module\Addon\GameServersAthpStats;
 class VirtualServerStatisticsController {
 	private static $cache_dir = ROOTDIR . '/modules/addons/GameServersAthpStats/cache';
 
-	public static function getAllowIpForLastWeekly(): array {
+	public static function getAllowIpForLastWeekly() {
 		$ips = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_max_slots_by_virtual_server' . DIRECTORY_SEPARATOR . date( 'Y' ) . DIRECTORY_SEPARATOR . date( 'n' );
@@ -32,7 +32,7 @@ class VirtualServerStatisticsController {
 		return array_keys( $ips );
 	}
 
-	public static function getAllowIpForMonth( int $year, int $moth ): array {
+	public static function getAllowIpForMonth(   $year,   $moth )  {
 		$ips = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_max_slots_by_virtual_server' . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR . $moth;
@@ -52,7 +52,7 @@ class VirtualServerStatisticsController {
 		return array_keys( $ips );
 	}
 
-	public static function getAllowIpForYear( int $year ): array {
+	public static function getAllowIpForYear(   $year )  {
 		$ips = [];
 
 		foreach ( scandir( self::$cache_dir . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR ) as $moth ) {
@@ -76,7 +76,7 @@ class VirtualServerStatisticsController {
 
 
 
-	public static function getAvailableMonthsForYear( int $year ): array {
+	public static function getAvailableMonthsForYear(   $year )  {
 		$return = [];
 
 		foreach ( scandir( self::$cache_dir . DIRECTORY_SEPARATOR . $year . DIRECTORY_SEPARATOR ) as $item ) {
@@ -90,7 +90,7 @@ class VirtualServerStatisticsController {
 		} );
 	}
 
-	public static function getAvailableYears(): array {
+	public static function getAvailableYears()  {
 		$return = [];
 
 		foreach ( scandir( self::$cache_dir . DIRECTORY_SEPARATOR ) as $item ) {
@@ -106,7 +106,7 @@ class VirtualServerStatisticsController {
 
 
 
-	public static function getAllowUidForIpForLastWeekly( string $ip ): array {
+	public static function getAllowUidForIpForLastWeekly(   $ip )  {
 		$uids = [];
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'instance_max_slots_by_virtual_server' . DIRECTORY_SEPARATOR . date( 'Y' ) . DIRECTORY_SEPARATOR . date( 'n' );
@@ -130,7 +130,7 @@ class VirtualServerStatisticsController {
 
 
 
-	public static function getMaxOnlineVirtualServersLastWeekly( $uid ): int {
+	public static function getMaxOnlineVirtualServersLastWeekly( $uid )  {
 		$online = 0;
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'virtual_server_online_history' . DIRECTORY_SEPARATOR . date( 'Y' ) . DIRECTORY_SEPARATOR . date( 'n' );
@@ -153,7 +153,7 @@ class VirtualServerStatisticsController {
 		return $online;
 	}
 
-	public static function getMaxSlotVirtualServersLastWeekly( $uid ): int {
+	public static function getMaxSlotVirtualServersLastWeekly( $uid )  {
 		$slots = 0;
 
 		$path = self::$cache_dir . DIRECTORY_SEPARATOR . 'virtual_server_slot_history' . DIRECTORY_SEPARATOR . date( 'Y' ) . DIRECTORY_SEPARATOR . date( 'n' );
